@@ -4,6 +4,7 @@ import bean.Express;
 import dao.BaseExpressDao;
 import dao.imp.ExpressDaoMysql;
 import exception.DuplicateCodeException;
+import util.MailUtil;
 import util.RandomUtil;
 
 import java.util.List;
@@ -86,12 +87,17 @@ public class ExpressService {
      * @return 录入的结果
      */
 
-    public static boolean insert(Express e) {
+    public static boolean insert(String recMail,Express e) {
         e.setCode(RandomUtil.getCode()+"");
         try {
-            return dao.insert(e);
+            boolean flag = dao.insert(e);
+            if (flag){
+                //发送邮件
+                MailUtil.SendMail(e.getCode(),recMail);
+            }
+            return flag;
         }catch (DuplicateCodeException duplicateCodeException){
-            return insert(e);
+            return insert(recMail,e);
         }
     }
 
@@ -103,10 +109,10 @@ public class ExpressService {
      * @return 修改的结果
      */
 
-    public static boolean update(int id, Express newExpress) {
+    public static boolean update(String recMail,int id, Express newExpress) {
         if (newExpress.getUserPhone()!=null){
             if (dao.delete(id)){
-                return insert(newExpress);
+                return insert(recMail,newExpress);
             }
             return false;
         }else {
