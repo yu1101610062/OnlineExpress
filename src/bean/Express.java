@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Express {
     private int id;
     private String number;
-    private String userName;
+    private String username;
     private String userPhone;
     private String company;
     private String code;
@@ -15,10 +15,10 @@ public class Express {
     private int status;
     private String sysPhone;
 
-    public Express(int id, String number, String userName, String userPhone, String company, String code, Timestamp inTime, Timestamp outTime, int status, String sysPhone) {
+    public Express(int id, String number, String username, String userPhone, String company, String code, Timestamp inTime, Timestamp outTime, int status, String sysPhone) {
         this.id = id;
         this.number = number;
-        this.userName = userName;
+        this.username = username;
         this.userPhone = userPhone;
         this.company = company;
         this.code = code;
@@ -31,12 +31,13 @@ public class Express {
     public Express() {
     }
 
-    public Express(String number, String userName, String userPhone, String company, String sysPhone) {
+    public Express(String number, String username, String userPhone, String company, String sysPhone,String code) {
         this.number = number;
-        this.userName = userName;
+        this.username = username;
         this.userPhone = userPhone;
         this.company = company;
         this.sysPhone = sysPhone;
+        this.code = code;
     }
 
     @Override
@@ -44,12 +45,12 @@ public class Express {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Express express = (Express) o;
-        return id == express.id && status == express.status && Objects.equals(number, express.number) && Objects.equals(userName, express.userName) && Objects.equals(userPhone, express.userPhone) && Objects.equals(company, express.company) && Objects.equals(code, express.code) && Objects.equals(inTime, express.inTime) && Objects.equals(outTime, express.outTime) && Objects.equals(sysPhone, express.sysPhone);
+        return id == express.id && status == express.status && Objects.equals(number, express.number) && Objects.equals(username, express.username) && Objects.equals(userPhone, express.userPhone) && Objects.equals(company, express.company) && Objects.equals(code, express.code) && Objects.equals(inTime, express.inTime) && Objects.equals(outTime, express.outTime) && Objects.equals(sysPhone, express.sysPhone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, number, userName, userPhone, company, code, inTime, outTime, status, sysPhone);
+        return Objects.hash(id, number, username, userPhone, company, code, inTime, outTime, status, sysPhone);
     }
 
     @Override
@@ -57,7 +58,7 @@ public class Express {
         return "Express{" +
                 "id=" + id +
                 ", number='" + number + '\'' +
-                ", userName='" + userName + '\'' +
+                ", userName='" + username + '\'' +
                 ", userPhone='" + userPhone + '\'' +
                 ", company='" + company + '\'' +
                 ", code='" + code + '\'' +
@@ -84,12 +85,12 @@ public class Express {
         this.number = number;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getUserPhone() {
