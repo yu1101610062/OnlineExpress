@@ -78,7 +78,7 @@ public class MailUtil {
         if (code.length() < 10) {
             msg = "您的取件码：" + code + "<br>此邮件由系统自动发出，请勿回复此邮件";
         } else {
-            msg = "您的快递单号：" + code + ",已经取出，如果不是您本人操作，请按照下面的提示回复本邮件寻求帮助<br>此邮件由系统自动发出，请勿回复此邮件";
+            msg = "您的快递单号：" + code + ",已经取出。<br>如果不是您本人操作，请按照下面的提示回复本邮件寻求帮助<br>此邮件由系统自动发出，请勿回复此邮件";
         }
         message.setContent(msg, "text/html;charset=UTF-8");
 

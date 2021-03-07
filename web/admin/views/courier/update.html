@@ -74,7 +74,7 @@
 				var phoneNumber = $("input:eq(2)").val();
 				var idNumber = $("input:eq(3)").val();
 				var password = $("input:eq(4)").val();
-				var express = {
+				var courier = {
 					id:id,
 					courierName:courierName,
 					phoneNumber:phoneNumber,
@@ -101,7 +101,7 @@
 					layer.close(windowId);
 					return false;
 				}
-				$.getJSON("/courier/update.do",express,function(data){
+				$.getJSON("/courier/update.do",courier,function(data){
 					layer.close(windowId);
 					layer.msg(data.result)
 					if(data.status === 0){

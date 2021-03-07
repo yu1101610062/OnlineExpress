@@ -20,7 +20,7 @@
                             <div class="meta">
                                 <span>用户人数</span>
                             </div>
-                            <div class="total">6666</div>
+                            <div id="data3_size" class="total">-</div>
                         </div>
                     </div>
                     <div class="chart-body">
@@ -30,7 +30,7 @@
                     <div class="chart-footer">
                         <div class="field">
                             <span>日注册量</span>
-                            <span>666</span>
+                            <span id="data3_day">-</span>
                         </div>
                     </div>
                 </div>
@@ -142,6 +142,12 @@
         if (res.status === 0){
             $("#data0_size").html(res.data.data1_size);
             $("#data0_day").html(res.data.data1_day);
+        }
+    },"JSON")
+    $.post("/user/console.do",null,function (res) {
+        if (res.status === 0){
+            $("#data3_size").html(res.data.data1_size);
+            $("#data3_day").html(res.data.data1_day);
         }
     },"JSON")
 </script>
