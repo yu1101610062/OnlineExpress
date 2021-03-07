@@ -44,7 +44,7 @@
                             <div class="meta">
                                 <span>快递员人数</span>
                             </div>
-                            <div class="total">888</div>
+                            <div id="data0_size" class="total">-</div>
                         </div>
                     </div>
                     <div class="chart-body">
@@ -54,7 +54,7 @@
                     <div class="chart-footer">
                         <div class="field">
                             <span>日注册量</span>
-                            <span>88</span>
+                            <span id="data0_day">-</span>
                         </div>
                     </div>
                 </div>
@@ -136,6 +136,12 @@
             $("#data1_day").html(data.data[0].data1_day);
             $("#data2_size").html(data.data[1].data2_size);
             $("#data2_day").html(data.data[1].data2_day);
+        }
+    },"JSON")
+    $.post("/courier/console.do",null,function (res) {
+        if (res.status === 0){
+            $("#data0_size").html(res.data.data1_size);
+            $("#data0_day").html(res.data.data1_day);
         }
     },"JSON")
 </script>
