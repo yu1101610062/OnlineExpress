@@ -92,8 +92,10 @@ public class ExpressService {
         try {
             boolean flag = dao.insert(e);
             if (flag){
-                //发送邮件
+                //发送邮件(真)
                 MailUtil.SendMail(e.getCode(),recMail);
+                //发送短信(假)
+                System.out.println("取件码已发送");
             }
             return flag;
         }catch (DuplicateCodeException duplicateCodeException){
@@ -120,6 +122,7 @@ public class ExpressService {
             Express e = dao.findByNumber(newExpress.getNumber());
             if (newExpress.getStatus()==1){
                 updateStatus(e.getCode());
+                MailUtil.SendMail(newExpress.getNumber(),recMail);
             }
             return update;
         }

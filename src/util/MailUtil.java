@@ -19,7 +19,7 @@ public class MailUtil {
     public static String myEmailSMTPHost = "mynas.space";
     public static final String SMTP_PORT = "255";
 
-    public static void SendMail(String code,String recMail) {
+    public static void SendMail(String code, String recMail) {
         // 1. 创建参数配置, 用于连接邮件服务器的参数配置
         Properties props = new Properties();                    // 参数配置
         props.setProperty("mail.transport.protocol", "smtp");   // 使用的协议（JavaMail规范要求）
@@ -34,7 +34,7 @@ public class MailUtil {
             session.setDebug(true);
 
             // 3. 创建一封邮件
-            MimeMessage message = createMimeMessage(code,session, myEmailAccount, recMail);
+            MimeMessage message = createMimeMessage(code, session, myEmailAccount, recMail);
 
             // 4. 根据 Session 获取邮件传输对象
             transport = session.getTransport();
@@ -47,7 +47,7 @@ public class MailUtil {
 
             // 7. 关闭连接
             transport.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -56,11 +56,11 @@ public class MailUtil {
     /**
      * 创建一封只包含文本的简单邮件
      *
-     * @param session 和服务器交互的会话
-     * @param sendMail 发件人邮箱
+     * @param session     和服务器交互的会话
+     * @param sendMail    发件人邮箱
      * @param receiveMail 收件人邮箱
      */
-    public static MimeMessage createMimeMessage(String code,Session session, String sendMail, String receiveMail) throws Exception {
+    public static MimeMessage createMimeMessage(String code, Session session, String sendMail, String receiveMail) throws Exception {
         // 1. 创建一封邮件
         MimeMessage message = new MimeMessage(session);
 
@@ -74,7 +74,13 @@ public class MailUtil {
         message.setSubject("请收好您的取件码，不要告诉他人", "UTF-8");
 
         // 5. Content: 邮件正文（可以使用html标签）（内容有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改发送内容）
-        message.setContent("您的取件码："+code, "text/html;charset=UTF-8");
+        String msg;
+        if (code.length() < 10) {
+            msg = "您的取件码：" + code + "<br>此邮件由系统自动发出，请勿回复此邮件";
+        } else {
+            msg = "您的快递单号：" + code + ",已经取出，如果不是您本人操作，请按照下面的提示回复本邮件寻求帮助<br>此邮件由系统自动发出，请勿回复此邮件";
+        }
+        message.setContent(msg, "text/html;charset=UTF-8");
 
         // 6. 设置发件时间
         message.setSentDate(new Date());

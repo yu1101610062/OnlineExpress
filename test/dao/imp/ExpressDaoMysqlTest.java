@@ -49,11 +49,12 @@ class ExpressDaoMysqlTest {
 
     @Test
     void insert() {
-
-        Express e = new Express("1231231","李四","13843838488","顺丰速运","18888888888","666666");
         boolean insert = false;
         try {
-            insert = dao.insert(e);
+            for (int i = 0;i<100;++i){
+                Express e = new Express("1231231"+i,"李四","13843838488","顺丰速运","18888888888",666566+i+"");
+                insert = dao.insert(e);
+            }
         } catch (DuplicateCodeException duplicateCodeException) {
             System.out.println("取件码重复！");
         }

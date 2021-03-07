@@ -52,7 +52,6 @@ public class DruidUtil {
             try {
                 result.close();
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -60,7 +59,6 @@ public class DruidUtil {
             try {
                 state.close();
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -68,7 +66,6 @@ public class DruidUtil {
             try {
                 conn.close();
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

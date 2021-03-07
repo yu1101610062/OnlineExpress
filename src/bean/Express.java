@@ -40,6 +40,14 @@ public class Express {
         this.code = code;
     }
 
+    public Express(String number, String username, String userPhone, String company, String sysPhone) {
+        this.number = number;
+        this.username = username;
+        this.userPhone = userPhone;
+        this.company = company;
+        this.sysPhone = sysPhone;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

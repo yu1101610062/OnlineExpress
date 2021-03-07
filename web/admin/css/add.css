@@ -61,3 +61,6 @@ body{
 .inline-input{
 	width: auto;
 }
+.layui-layer-content{
+	color: #FFFFFF;
+}

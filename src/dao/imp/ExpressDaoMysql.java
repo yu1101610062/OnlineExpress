@@ -298,12 +298,12 @@ public class ExpressDaoMysql implements BaseExpressDao {
             state.setString(5,e.getCode());
             state.setString(6,e.getSysPhone());
             return state.executeUpdate() > 0;
-        } catch (SQLException e1) {
+        } catch (Exception e1) {
             if(e1.getMessage().endsWith("for key 'code'")){
                 DuplicateCodeException e2 = new DuplicateCodeException(e1.getMessage());
                 throw e2;
             }else{
-                e1.printStackTrace();
+                System.out.println("发生错误");
             }
         }finally {
             DruidUtil.close(conn,state,null);
