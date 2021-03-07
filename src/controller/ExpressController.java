@@ -121,8 +121,7 @@ public class ExpressController {
             msg.setStatus(-1);
             msg.setResult("修改失败");
         }
-        String json = JSONUtil.toJSON(msg);
-        return json;
+        return JSONUtil.toJSON(msg);
     }
 
     @ResponseBody("/express/delete.do")
@@ -137,7 +136,6 @@ public class ExpressController {
             msg.setStatus(-1);
             msg.setResult("删除失败");
         }
-        String json = JSONUtil.toJSON(msg);
-        return json;
+        return JSONUtil.toJSON(msg);
     }
 }
