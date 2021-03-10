@@ -5,7 +5,7 @@
          version="4.0">
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
-        <servlet-class>MVC.DispatcherServlet</servlet-class>
+        <servlet-class>admin.MVC.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contentConfigLocation</param-name>
             <param-value>application.properties</param-value>
